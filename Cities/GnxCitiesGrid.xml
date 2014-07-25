@@ -1,1 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+    <ModulePrefs title="GnxCities"
+                 height="250">
+
+    </ModulePrefs>
+    <Content type="html">
+        <![CDATA[
+        <link href="http://localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
+        <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/ext-all.js"></script>
+        <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/ext-theme-crisp.js" />
+
+        <script src="http://localhost:25160/apps/dataViewer/app.js"></script>
+        
+        <script>
+            Ext.onReady(function(){
+                Ext.Msg.alert('Status', 'Changes saved successfully.');
+            });
+        </script>
+        ]]>
+    </Content>
+</Module>

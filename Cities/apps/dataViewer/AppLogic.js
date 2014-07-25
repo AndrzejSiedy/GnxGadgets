@@ -11,8 +11,6 @@ Ext.define('Gnx.AppLogic', {
 		
 	    Ext.getBody().on("contextmenu", Ext.emptyFn, null, { preventDefault: true });
 
-	    console.warn('dupa');
-
 	    var gridMod = Ext.create('Gnx.view.View');
 
 	    var view = Ext.create('Ext.container.Viewport', {
@@ -21,7 +19,6 @@ Ext.define('Gnx.AppLogic', {
 				gridMod.view
 	        ]
 	    });
-
 
 	},
 
