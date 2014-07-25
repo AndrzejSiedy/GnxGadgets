@@ -20,8 +20,26 @@ Ext.require([
 Ext.application({
 	name: 'gnx',
 	launch: function () {
+
+	    //function callback(topic, data, subscriberData) {
+	    //    console.warn('message', topic, data, subscriberData)
+	    //}
+
+	    //function subscribe() {
+	    //    subId = gadgets.Hub.subscribe("org.apache.shindig.random-number", callback);
+	    //    console.warn('evt subscribed');
+	    //}
+
+	    //function unsubscribe() {
+	    //    gadgets.Hub.unsubscribe(subId);
+	    //    document.getElementById("output").innerHTML = "";
+	    //}
+
+	    //subscribe();
+
 	    Ext.QuickTips.init();
 	    Ext.create('Gnx.AppLogic');
+
 	}
 });
 

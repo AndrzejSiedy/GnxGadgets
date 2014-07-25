@@ -14,11 +14,26 @@ Ext.define('Gnx.AppLogic', {
 	    var gridMod = Ext.create('Gnx.view.View');
 
 	    var view = Ext.create('Ext.container.Viewport', {
-            layout: 'fit',
+	        layout: 'fit',
 	        items: [
 				gridMod.view
 	        ]
 	    });
+
+	    function callback(topic, data, subscriberData) {
+	        console.warn('message', topic, data, subscriberData)
+	    }
+
+	    function subscribe() {
+	        subId = gadgets.Hub.subscribe("org.apache.shindig.random-number", callback);
+	        console.warn('evt subscribed');
+	    }
+
+	    function unsubscribe() {
+	        gadgets.Hub.unsubscribe(subId);
+	    }
+
+	    subscribe();
 
 	},
 
