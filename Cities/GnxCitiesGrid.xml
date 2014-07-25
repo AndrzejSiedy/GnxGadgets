@@ -10,13 +10,11 @@
         <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/ext-all.js"></script>
         <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/ext-theme-crisp.js" />
 
-        <script src="http://localhost:25160/apps/dataViewer/app.js"></script>
-        
+        <!--don't know why without this app.js will not load correctly-->
         <script>
-            Ext.onReady(function(){
-                Ext.Msg.alert('Status', 'Changes saved successfully.');
-            });
         </script>
+        
+        <script src="http://localhost:25160/apps/dataViewer/app.js"></script>
         ]]>
     </Content>
 </Module>
