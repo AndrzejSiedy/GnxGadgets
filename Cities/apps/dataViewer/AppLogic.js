@@ -8,7 +8,7 @@ Ext.define('Gnx.AppLogic', {
 	],
 	
 	constructor: function(){
-		
+	    
 	    Ext.getBody().on("contextmenu", Ext.emptyFn, null, { preventDefault: true });
 
 	    var gridMod = Ext.create('Gnx.view.View');
@@ -20,20 +20,24 @@ Ext.define('Gnx.AppLogic', {
 	        ]
 	    });
 
-	    function callback(topic, data, subscriberData) {
-	        console.warn('message', topic, data, subscriberData)
-	    }
 
-	    function subscribe() {
-	        subId = gadgets.Hub.subscribe("org.apache.shindig.random-number", callback);
-	        console.warn('evt subscribed');
-	    }
+	    if (typeof gasgets != "undefined") {
 
-	    function unsubscribe() {
-	        gadgets.Hub.unsubscribe(subId);
-	    }
+	        function callback(topic, data, subscriberData) {
+	            console.warn('message', topic, data, subscriberData)
+	        }
 
-	    subscribe();
+	        function subscribe() {
+	            subId = gadgets.Hub.subscribe("org.apache.shindig.random-number", callback);
+	            console.warn('evt subscribed');
+	        }
+
+	        function unsubscribe() {
+	            gadgets.Hub.unsubscribe(subId);
+	        }
+
+	        subscribe();
+	    }
 
 	},
 
