@@ -65,6 +65,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apps\map\app.js" />
+    <Content Include="apps\map\AppLogic.js" />
+    <Content Include="apps\map\data\model\City.js" />
+    <Content Include="apps\map\map\Features.js" />
+    <Content Include="apps\map\map\Map.js" />
+    <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
