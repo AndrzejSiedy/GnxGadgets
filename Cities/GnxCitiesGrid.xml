@@ -16,13 +16,17 @@
     </ModulePrefs>
     <Content type="html">
         <![CDATA[
+        
+        <script src="http://localhost:25160/apps/ShindigUtils.js"></script>
+        
         <link href="http://localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
         <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/ext-all.js"></script>
         <script src="http://localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/ext-theme-crisp.js" />
 
+        
+        
         <!--don't know why without this app.js will not load correctly-->
         <script>
-        
             // NOTE: global variable "gadgets" is available
         
             // Example of setting a parameter to the HubClient used by pubsub-2 feature.

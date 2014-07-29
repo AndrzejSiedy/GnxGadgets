@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apps\ShindigUtils.js" />
     <Content Include="GnxCitiesGrid.xml" />
     <Content Include="index.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

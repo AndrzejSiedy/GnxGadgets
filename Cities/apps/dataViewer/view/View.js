@@ -22,10 +22,11 @@
 
         this.setup();
 
+        ShindigUtils.subscribe("gnx.shindig.cities.highlighed", Ext.bind(this.onFeatureHighlighted, this));
+
     },
 
-    onFeatureHighlighted: function(data){
-        //console.warn('select feature on store', data);
+    onFeatureHighlighted: function(evtName, data){
         var recIdx = this.store.find('ID', data.ID);
         if (recIdx > -1) {
             this.view.view.focusRow(recIdx);
@@ -126,6 +127,13 @@
             sel.push(selected[i].getData());
         }
 
+        var message = {
+            evt: 'gnx.shindig.cities.selected',
+            data: sel
+        }
+        
+        ShindigUtils.publish("gnx.shindig.cities.selected", message);
+
     },
 
     onItemMouseEnter: function(grid, record, item, index, e, eOpts){
@@ -153,10 +161,24 @@
             rawData.push(records[i].getData());
         }
 
+        var message = {
+            evt: 'gnx.shindig.cities.loaded',
+            data: rawData
+        }
+
+        ShindigUtils.publish("gnx.shindig.cities.loaded", message);
+
     },
 
     onStoreRemoveAll: function (store, eOpts) {
         console.warn('onStoreRemoveAll');
+
+        var message = {
+            evt: 'gnx.shindig.cities.removeAll',
+            data: null
+        }
+
+        ShindigUtils.publish("gnx.shindig.cities.removeAll", message);
     },
 
     onStoreRemove: function (store, record, index, isMove, eOpts ) {

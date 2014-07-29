@@ -5,7 +5,7 @@
 // NOTE: important to give valid not relative path - it has to be available online
 // as when rendered by OpenSocial Container it will get it's url
 //The actual app
-Ext.Loader.setPath('Gnx', location.href + 'apps/dataViewer');
+Ext.Loader.setPath('Gnx', 'http://localhost:25160/apps/dataViewer');
 
 var __extjs__ = '5.0.0';
 var __localhost__ = 'http://localhost/';
@@ -36,7 +36,6 @@ Ext.application({
 	    //}
 
 	    //subscribe();
-
 	    Ext.QuickTips.init();
 	    Ext.create('Gnx.AppLogic');
 
