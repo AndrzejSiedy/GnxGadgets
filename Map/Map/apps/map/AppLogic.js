@@ -58,12 +58,59 @@ Ext.define('Gnx.AppLogic', {
 	        me.mapMod.map.updateSize();
 	    });
 
-	    //this.getCities();
+	    this.mapMod.on('featureHighlighted', this.onFeatureHighlighted, this);
 
+	    ShindigUtils.subscribe("gnx.shindig.cities.selected", Ext.bind(this.onCitiesSelected, this));
+	    ShindigUtils.subscribe("gnx.shindig.cities.loaded", Ext.bind(this.featuresRecived, this));
+	    
+	},
+
+	loadWeather: function(location, woeid) {
+	    $.simpleWeather({
+	        location: location,
+	        woeid: woeid,
+	        unit: 'c',
+	        success: function (weather) {
+	            var html = '';
+	            //html = '<h2><i class="icon-' + weather.code + '"></i> ' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
+	            html += '<h2><img src="' + weather.thumbnail + '"/>' + weather.temp + '&deg; ' + weather.units.temp + '</h2>';
+	            html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+	            html += '<li class="currently">'+weather.currently+'</li>';
+	            html += '<li>'+weather.alt.temp+'&deg;C</li>';
+	            html += '</ul>';
+                    
+      
+	            //$("#weather").html(html);
+	            Ext.create('Ext.window.Window', {
+                    autoScroll: true,
+	                width: 200,
+	                height: 200,
+	                html: html
+	            }).show();
+
+
+	        },
+	        error: function(error) {
+	            $("#weather").html('<p>'+error+'</p>');
+	        }
+	    });
+	},
+
+	onFeatureHighlighted: function (data) {
+	    ShindigUtils.publish("gnx.shindig.cities.highlighed", data);
+	    this.loadWeather(data.Lat + ',' + data.Lon);
+	},
+
+	featuresRecived: function (evtName, data) {
+	    this.featuresMod.createFeatures(data.data);
+	},
+
+	onCitiesSelected: function(evtName, data){
+	    console.warn('onCitiesSelected', arguments);
+	    this.mapMod.onGridDataSelectionChange(data.data)
 	},
 
 	mapReady: function(){
-	    this.featuresMod.getCities(start = 0, limit = 50);
 	},
 
 	onFeaturesReady: function(features){

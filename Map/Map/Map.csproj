@@ -70,6 +70,9 @@
     <Content Include="apps\map\data\model\City.js" />
     <Content Include="apps\map\map\Features.js" />
     <Content Include="apps\map\map\Map.js" />
+    <Content Include="apps\ShindigUtils.js" />
+    <Content Include="Css\Site.css" />
+    <Content Include="GnxMap.xml" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>

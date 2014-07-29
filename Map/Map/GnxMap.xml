@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Module>
+    <ModulePrefs title="GnxMap"
+                 height="250">
+
+        <Require feature="pubsub-2">
+            <!--<Param name="topics">
+                <![CDATA[ 
+                <Topic title="Return Cities" name="gnx.shindig.gnx-map"
+                        description="Returns set of cities data" type="object"
+                        subscribe="true"/>
+                ]]>
+            </Param>-->
+        </Require>
+    
+    </ModulePrefs>
+    <Content type="html">
+        <![CDATA[
+        
+            <script type="text/javascript" src="http://localhost:14678/apps/ShindigUtils.js"></script>
+            
+            <!--jQuery-->
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            
+            
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.0.2/jquery.simpleWeather.min.js"></script>
+            <link href="//localhost:14678/Css/Site.css" rel="stylesheet" />
+            
+            <!--OL3 required css and js-->
+            <link rel="stylesheet" type="text/css" href="//ol3js.org/en/master/css/ol.css" />
+            <script type="text/javascript" src="//localhost/jsLibs/proj4js/1.1.0/lib/proj4js-compressed.js"></script>
+            <script type="text/javascript" src="//ol3js.org/en/master/build/ol.js"></script>
+            
+            <!-- Ext related css and libs-->
+            <link href="//localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" rel="stylesheet" />
+            <script src="//localhost/jsLibs/ExtJs/5.0.0/build/ext-all.js"></script>
+            <link href="//localhost/jsLibs/ExtJs/5.0.0/build/packages/ext-theme-crisp/build/ext-theme-crisp.js" rel="stylesheet" />
+            
+            
+            <!--don't know why without this app.js will not load correctly-->
+            <script>
+        
+                // NOTE: global variable "gadgets" is available
+        
+                // Example of setting a parameter to the HubClient used by pubsub-2 feature.
+                //gadgets.HubSettings.params.HubClient.onSecurityAlert = function(alertSource, alertType) {
+                //  alert("SECURITY ERROR!");
+                //  window.location.href = "about:blank";
+                //};
+            </script>
+            
+            <!--NOTE: for Gadgets need to provide full url-->
+            <script src="//localhost:14678/apps/map/app.js"></script>
+            
+        ]]>
+    </Content>
+</Module>

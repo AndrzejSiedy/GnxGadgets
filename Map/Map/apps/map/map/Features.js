@@ -20,55 +20,12 @@
         // NOTE: There MUST be at least one callback registered before start
         //chat.on('onGridDataLoaded', Ext.bind(this.onGridDataLoaded, this));
 
-
-    },
-
-    onGridDataLoaded: function (data) {
-        this.createFeatures(data);
-    },
-
-
-    getCities: function (start, limit) {
-
-        //start = start ? start : 0;
-        //limit = limit ? limit : 50;
-
-
-        //Ext.Ajax.request({
-
-        //    // because we have enabled CORS on web services (WebApi)
-        //    // we can call for data without proxy
-        //    // proxy used here is using Cartomatic.Utils.Http
-        //    // proxies/xDomainProxy.ashx?url=
-        //    url: 'http://localhost/WebApi/api/city/GetCitiesPaging?start=' + start + '&limit=' + limit,
-        //    method: 'GET',
-        //    //headers: {
-        //    //    'Content-Type': 'application/json; charset=utf-8'
-        //    //},
-        //    //params: Ext.JSON.encode({
-        //    //    start: 0,
-        //    //    limit: 2000
-        //    //}),
-        //    success: Ext.bind(this.getCitiesCallbackSuccess, this),
-        //    failure: Ext.bind(this.getCitiesCallbackFailure, this)
-        //});
-    },
-
-    getCitiesCallbackSuccess: function (response) {
-
-        var resp = Ext.JSON.decode(response.responseText);
-
-        var total = resp.total
-        var records = resp.records
-
-        console.warn('got ', records.length, ' out of ', total);
-
-        this.createFeatures(resp.records);
+        //ShindigUtils.subscribe('gnx.shindig.cities.loaded', Ext.bind(this.onGridDataLoaded, this));
         
     },
 
-    getCitiesCallbackFailure: function (response) {
-        console.warn('getCitiesCallbackFailure', response);
+    onGridDataLoaded: function (evtName, data) {
+        this.createFeatures(data);
     },
 
     createFeatures: function (data) {

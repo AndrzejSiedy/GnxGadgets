@@ -220,7 +220,7 @@
         
         var features4Selection = [];
 
-        // this is manually created filter flow, we test custom data assigned to trhe feature properties
+        // this is manually created filter flow, we test custom data assigned to the feature properties
         for (var i = 0; i < features.length; i++) {
             var f = features[i];
             if (Ext.Array.indexOf(ids, f.getProperties().data['ID']) > -1) {
@@ -261,6 +261,8 @@
 
     highlightFeature: function(feature) {
         
+        
+
         if (feature !== this.highlight) {
             if (this.highlight) {
                 this.highlightFeatureOverlay.removeFeature(this.highlight);
@@ -274,6 +276,8 @@
                
                 // call SignalR service method, which will push notification to other clients in the group
                 //chat.server.featureHighlighted(_roomId_, feature.getProperties().data);
+
+                this.fireEvent('featureHighlighted', feature.getProperties().data);
 
             }
             this.highlight = feature;
