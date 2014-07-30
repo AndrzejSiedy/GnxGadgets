@@ -36,7 +36,11 @@ Ext.define('Gnx.AppLogic', {
 						{
 						    xtype: 'container',
 						    layout: 'fit',
-						    html: '<div id=' + mapDivId + ' style="width:100%;height:100%;"></div>'
+						    html: '<div id=' + mapDivId + ' style="width:100%;height:100%;">' +
+                                        '<div id="popup" class="ol-popup">' +
+                                            '<a href="#" id="popup-closer" class="ol-popup-closer"></a>' +
+                                        '<div id="popup-content"></div>' +
+                                '</div></div>'
 						}
 				    ]
 				}
@@ -48,7 +52,7 @@ Ext.define('Gnx.AppLogic', {
 	                Ext.defer(function () {
 	                    me.mapMod.setTarget(mapDivId)
 	                    me.mapReady();
-	                }, 100, this);
+	                }, 1, this);
 
 	            }
 	        }

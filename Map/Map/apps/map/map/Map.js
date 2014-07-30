@@ -84,23 +84,58 @@
         this.layers['serviceVectorLayer'] = serviceVectorLayer;
         this.layersArr.push(serviceVectorLayer);
 
+
+    },
+
+    setupPopup: function(){
+        /**
+         * Elements that make up the popup.
+         */
+        var container = document.getElementById('popup');
+        var content = document.getElementById('popup-content');
+        var closer = document.getElementById('popup-closer');
+
+        /**
+         * Add a click handler to hide the popup.
+         * @return {boolean} Don't follow the href.
+         */
+        closer.onclick = function () {
+            container.style.display = 'none';
+            closer.blur();
+            return false;
+        };
+
+        /**
+         * Create an overlay to anchor the popup to the map.
+         */
+        var container =
+        this.overlay = new ol.Overlay({
+            element: container
+        });
+
+        this.map.addOverlay(this.overlay);
     },
 
     createMap: function (mapDivId) {
-     
-        this.map = new ol.Map({
+
+        var mapConfig = {
             renderer: 'canvas',
-            target: mapDivId ? mapDivId : null, 
+            target: mapDivId ? mapDivId : null,
             view: new ol.View({
                 //projection: 'EPSG:4326',
                 //projection: 'EPSG:3857',
                 center: [0, 0],
                 zoom: 2
             })
-        });
+        }
 
-        // dev only
-        map = this.map;
+        if (this.overlay) {
+            mapConfig.overlays = [this.overlay];
+        }
+
+     
+        this.map = new ol.Map(mapConfig);
+
 
     },
 
@@ -181,6 +216,8 @@
 
         if (this.map) {
             this.map.setTarget(targetDiv);
+
+            this.setupPopup();
         }
 
     },
@@ -296,6 +333,28 @@
 
         this.map.on('singleclick', function (evt) {
             me.highlightFeature(me.getFeatureFromPixed(evt.pixel));
+        });
+
+
+
+
+        /**
+         * Add a click handler to the map to render the popup.
+         */
+        this.map.on('click', function (evt) {
+
+            var container = document.getElementById('popup');
+            var content = document.getElementById('popup-content');
+            var closer = document.getElementById('popup-closer');
+
+            var coordinate = evt.coordinate;
+            var hdms = ol.coordinate.toStringHDMS(ol.proj.transform(
+                coordinate, 'EPSG:3857', 'EPSG:4326'));
+
+            me.overlay.setPosition(coordinate);
+            content.innerHTML = '<p>You clicked here:</p><code>' + hdms + '</code>';
+            container.style.display = 'block';
+
         });
 
     }
