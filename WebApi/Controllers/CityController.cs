@@ -37,7 +37,7 @@ namespace WebApi.Controllers
         public StoreData GetCitiesPaging(int _dc = 0, int page = 1, int limit = 50, int start = 0)
         {
 
-            var list = db.Cities.ToList();
+            var list = db.Cities.ToList().OrderBy(m => m.AsciiName);
 
             return new StoreData()
             {
