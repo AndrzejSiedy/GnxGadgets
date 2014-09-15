@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <Module>
+	<ModulePrefs title="Map"
+    author="Jane Smith"
+    author_email="xxx@google.com" />
+	<Require feature="dynamic-height" />
+	<Content type="url" href="http://localhost/ol3Map/?_roomId_=666" />
+ </Module>

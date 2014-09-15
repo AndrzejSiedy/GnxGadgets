@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <Module>
+	<ModulePrefs title="Grid" height="300"
+    author="Jane Smith"
+    author_email="xxx@google.com" />
+	<Require feature="dynamic-height" />
+	<Events>
+		<Event-in name="evt1">
+			data = "cos tam"
+		</Event-in>
+		<Event-out name="evt2">
+			data = "cos tam 666"
+		</Event-out>
+	</Events>
+	<Content type="url" href="http://localhost/Grid/?_roomId_=666" />
+ </Module>
